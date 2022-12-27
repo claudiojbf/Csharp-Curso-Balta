@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BaltaOO.SharedContext;
 namespace BaltaOO.ContentContext
 {
     public class CareerItem : Base

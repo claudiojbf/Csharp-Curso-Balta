@@ -1,3 +1,4 @@
+using BaltaOO.SharedContext;
 using BaltaOO.ContentContext.Enums;
 
 namespace BaltaOO.ContentContext

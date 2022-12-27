@@ -1,3 +1,4 @@
+using BaltaOO.SharedContext;
 namespace BaltaOO.ContentContext
 {
     public abstract class Content : Base
