@@ -1,12 +1,12 @@
+using System.Collections.Generic;
 namespace BaltaOO.ContentContext
 {
     public class CareerItem : Base
     {
-        public IList<string> Notifications { get; set; }
         public CareerItem(int ordem, string title, string description, Course course)
         {
             if (course == null)
-                throw new Exception("O curso não pode ser nulo");
+                AddNotification(new NotificationContext.Notification("Course", "Curso Invalido"));
             Ordem = ordem;
             Title = title;
             Description = description;

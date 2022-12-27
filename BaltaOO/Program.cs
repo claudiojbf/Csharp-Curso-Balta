@@ -1,5 +1,6 @@
 ﻿using System;
 using BaltaOO.ContentContext;
+using BaltaOO.NotificationContext;
 
 namespace BaltaOO
 {
@@ -23,6 +24,7 @@ namespace BaltaOO
             var CourseCsharp = new Course("Fundamentos c#", "fundamentos-c#");
             var CourseDotnet = new Course("Fundamentos dotnet", "fundamentos-dotnet");
 
+
             Courses.Add(CourseOOP);
             Courses.Add(CourseCsharp);
             Courses.Add(CourseDotnet);
@@ -30,7 +32,7 @@ namespace BaltaOO
             var careers = new List<Career>();
             var Career = new Career("Especialista Dotnet", "especialista-dotnet");
             var careerItem2 = new CareerItem(2, "Aprenda .Net", "", CourseDotnet);
-            var careerItem = new CareerItem(1, "Comece por aqui", "", CourseCsharp);
+            var careerItem = new CareerItem(1, "Comece por aqui", "", null);
             var careerItem3 = new CareerItem(3, "OOP", "", CourseOOP);
 
             Career.Items.Add(careerItem2);
@@ -44,8 +46,13 @@ namespace BaltaOO
                 foreach (var item in c.Items.OrderBy(x => x.Ordem))
                 {
                     System.Console.WriteLine($"{item.Ordem} - {item.Title}");
-                    System.Console.WriteLine(item.Course.Title);
-                    System.Console.WriteLine(item.Course.Level);
+                    System.Console.WriteLine(item.Course?.Title);
+                    System.Console.WriteLine(item.Course?.Level);
+
+                    foreach (var n in item.Notifications)
+                    {
+                        System.Console.WriteLine($"{n.Property} - {n.Message}");
+                    }
                 }
             }
         }
