@@ -2,6 +2,7 @@ namespace BaltaOO.ContentContext
 {
     public class CareerItem
     {
+        public IList<string> Notifications { get; set; }
         public CareerItem(int ordem, string title, string description, Course course)
         {
             if (course == null)
