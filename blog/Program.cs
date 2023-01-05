@@ -5,7 +5,7 @@ namespace Blog
 {
     class Program
     {
-        private const string CONNECTION_STIRNG = @"Server=localhost,1433;Database=blog;User ID=sa; PASSWORD=Linkstart@11;TrustServerCertificate=True";
+        private const string CONNECTION_STIRNG = @"Server=localhost,1433;Database=blog;User ID=sa; PASSWORD=1q2w3e4r@#$;TrustServerCertificate=True";
         static void Main(string[] args)
         {
             Database.Connection = new SqlConnection(CONNECTION_STIRNG);
