@@ -36,6 +36,7 @@ namespace BlogEf.Data.Mappings
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(255)
                 .IsRequired();
+            builder.Property(x => x.GitHub);
 
             builder.Property(x => x.Bio)
                 .HasColumnName("Bio")

@@ -25,6 +25,7 @@ namespace BlogEf.Models
         public string Bio { get; set; } = null!;
         public string Image { get; set; } = null!;
         public string Slug { get; set; } = null!;
+        public string GitHub { get; set; }
 
         public IList<Post> Posts { get; set; }
         public IList<Role> Roles { get; set; }

@@ -21,23 +21,39 @@ namespace BlogEf
 
             // context.SaveChanges();
 
-            using var context = new BlogDataContext();
-            var user = context.Users.Where(x => x.Id == 2).FirstOrDefault();
-            var post = new Post()
+            // using var context = new BlogDataContext();
+            // var user = context.Users.Where(x => x.Id == 2).FirstOrDefault();
+            // var post = new Post()
+            // {
+            //     Author = user,
+            //     Body = "Meu Artigo",
+            //     Category = new Category
+            //     {
+            //         Name = "BackEnd",
+            //         Slug = "backend2"
+            //     },
+            //     CreateDate = DateTime.Now,
+            //     Slug = "meu-artigo",
+            //     Summary = "Neste artigo vamos conferir...",
+            //     Title = "Meu Artigo"
+            // };
+            // context.Posts.Add(post);
+            // context.SaveChanges();
+
+            var user = new User
             {
-                Author = user,
-                Body = "Meu Artigo",
-                Category = new Category
-                {
-                    Name = "BackEnd",
-                    Slug = "backend2"
-                },
-                CreateDate = DateTime.Now,
-                Slug = "meu-artigo",
-                Summary = "Neste artigo vamos conferir...",
-                Title = "Meu Artigo"
+                Bio="a",
+                Email = "a@a.com",
+                GitHub = "addc",
+                Image = "https://",
+                Name = "Aaaasaa",
+                PasswordHash = "123",
+                Slug = "aaaa-aaaa"
             };
-            context.Posts.Add(post);
+
+            using var context = new BlogDataContext();
+
+            context.Users.Add(user);
             context.SaveChanges();
         }
     }
