@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace BlogEf.Models
 {
     // CREATE TABLE [Category] (
@@ -11,7 +14,9 @@ namespace BlogEf.Models
     public class Category
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Slug { get; set; }
+        public string Name { get; set; } = null!;
+        public string Slug { get; set; } = null!;
+
+        public IList<Post> Posts { get; set; }
     }
 }

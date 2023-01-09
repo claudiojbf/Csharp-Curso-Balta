@@ -11,12 +11,12 @@ namespace BlogEf.Models
     //     CONSTRAINT [PK_Tag] PRIMARY KEY([Id]),
     //     CONSTRAINT [UQ_Tag_Slug] UNIQUE([Slug])
     // )
-    [Table("Tag")]
     public class Tag
     {
-        [Key] 
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Slug { get; set; }
+        public string Name { get; set; } = null!;
+        public string Slug { get; set; } = null!;
+    
+        public List<Post> Posts { get; set; }
     }
 }

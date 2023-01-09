@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace BlogEf.Models
 {
     // CREATE TABLE [User] (
@@ -14,13 +17,16 @@ namespace BlogEf.Models
     // CONSTRAINT [UQ_User_Slug] UNIQUE([Slug])
     // )
     public class User
-    {  
+    {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-        public string Bio { get; set; }
-        public string Image { get; set; }
-        public string Slug { get; set; }
+        public string Name { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PasswordHash { get; set; } = null!;
+        public string Bio { get; set; } = null!;
+        public string Image { get; set; } = null!;
+        public string Slug { get; set; } = null!;
+
+        public IList<Post> Posts { get; set; }
+        public IList<Role> Roles { get; set; }
     }
 }

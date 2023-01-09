@@ -89,3 +89,11 @@ CREATE TABLE [PostTag] (
 
     CONSTRAINT PK_PostTag PRIMARY KEY([PostId], [TagId])
 )
+
+SELECT * FROM [Tag]
+
+ALTER TABLE [Category] ALTER COLUMN  [Name] NVARCHAR(80) NOT NULL
+
+SELECT * FROM [Post]
+SELECT * FROM [Category]
+SELECT * FROM [User]
