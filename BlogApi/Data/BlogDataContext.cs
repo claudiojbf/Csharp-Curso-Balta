@@ -6,6 +6,10 @@ namespace BlogApi.Data
 {
     public class BlogDataContext : DbContext
     {
+        public BlogDataContext(DbContextOptions<BlogDataContext> options) : base(options)
+        {
+            
+        }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         // public DbSet<PostTag> PostTags { get; set; }
@@ -14,8 +18,8 @@ namespace BlogApi.Data
         public DbSet<User> Users { get; set; }
         // public DbSet<UserRole> UserRoles { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer(Configuration.database);
+        // protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //     => options.UseSqlServer(Configuration.database);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -6,6 +6,7 @@ using BlogApi.Data;
 using BlogApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,14 +16,31 @@ ConfigureAuthentication(builder);
 ConfigureMvc(builder);
 ConfigureService(builder);
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 LoadConfiguration(app);
+//HTTPS
+// app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseResponseCompression();
 app.UseStaticFiles();
 app.MapControllers();
+
+if(app.Environment.IsDevelopment())
+{
+    System.Console.WriteLine("Estou em um ambiente de desenvolvimento");
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+if(app.Environment.IsProduction())
+{
+    System.Console.WriteLine("Estou em um ambiente de produção");
+}
+
 app.Run();
 
 void LoadConfiguration(WebApplication app)
@@ -81,7 +99,8 @@ void ConfigureMvc(WebApplicationBuilder builder)
 
 void ConfigureService(WebApplicationBuilder builder)
 {
-    builder.Services.AddDbContext<BlogDataContext>();
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    builder.Services.AddDbContext<BlogDataContext>(options => options.UseSqlServer(connectionString));
     builder.Services.AddTransient<TokenService>(); //Sempre criar um novo
     // builder.Services.AddScoped(); //Requisição
     // builder.Services.AddSingleton(); // Singleton -> 1 por App!
