@@ -11,6 +11,8 @@
 
         public static string localhost;
 
+        public static string database;
+
         public class SmtpConfiguration
         {
             public string Host { get; set; }
